@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 14,
+  "id": 13,
   "links": [],
   "panels": [
     {
@@ -84,7 +84,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -306,7 +306,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -451,7 +451,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -549,7 +549,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -789,7 +789,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -923,7 +923,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -1038,7 +1038,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -1141,7 +1141,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -1161,6 +1161,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "grafanacloud-prom"
       },
@@ -1244,7 +1245,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -1252,7 +1253,7 @@
             "uid": "grafanacloud-prom"
           },
           "editorMode": "code",
-          "expr": "irate(v2ray_traffic_uplink_bytes_total{donor=\"$donor\", ,instance=~\"$instance\",dimension=\"inbound\"}[30m])",
+          "expr": "irate(v2ray_traffic_uplink_bytes_total{donor=\"$donor\",instance=~\"$instance\",dimension=\"inbound\"}[30m])",
           "interval": "",
           "legendFormat": "{{target}}",
           "range": true,
@@ -1347,7 +1348,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0-72847",
+      "pluginVersion": "11.5.0-80683",
       "targets": [
         {
           "datasource": {
@@ -1368,18 +1369,25 @@
   ],
   "preload": false,
   "refresh": "1m",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
       {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "grafanacloud-prom"
         },
         "definition": "label_values(v2ray_up,instance)",
-        "includeAll": false,
+        "includeAll": true,
         "label": "Instance",
+        "multi": true,
         "name": "instance",
         "options": [],
         "query": {
@@ -1392,6 +1400,10 @@
         "type": "query"
       },
       {
+        "current": {
+          "text": "scn",
+          "value": "scn"
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "grafanacloud-prom"
@@ -1413,7 +1425,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -1432,6 +1444,6 @@
   "timezone": "",
   "title": "XRay Traffic Dashboard",
   "uid": "CCSvIIEZz",
-  "version": 13,
+  "version": 4,
   "weekStart": ""
 }
