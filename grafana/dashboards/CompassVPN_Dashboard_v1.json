@@ -1,4 +1,53 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_GRAFANACLOUD-COMPASSVPN-PROM",
+      "label": "grafanacloud-compassvpn-prom",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.0.0-85518"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -19,7 +68,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 76,
+  "id": null,
   "links": [
     {
       "asDropdown": false,
@@ -51,7 +100,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -282,7 +331,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "v2ray_uptime_seconds{donor=\"$donor\", instance=~\"$instance\"}",
@@ -294,7 +343,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "expr": "sum by (instance) (increase(v2ray_traffic_downlink_bytes_total{job=~\"$job\",instance=~\"$instance\",dimension=\"inbound\"}[$__range]))",
           "format": "table",
@@ -307,7 +356,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -336,7 +385,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -421,7 +470,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum(irate(v2ray_traffic_downlink_bytes_total{donor=\"$donor\", instance=~\"$instance\"}[30m]))",
@@ -433,7 +482,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -446,7 +495,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum(irate(v2ray_traffic_downlink_bytes_total{donor=\"$donor\", instance=~\"$instance\"}[30m])) \r\n+\r\nsum(irate(v2ray_traffic_uplink_bytes_total{job=~\"$job\", instance=~\"$instance\"}[30m]))",
@@ -476,7 +525,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -589,7 +638,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=\"$donor\", mode=\"system\",instance=~\"$node\"}[30m])) * 100",
@@ -602,7 +651,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode='user',instance=~\"$node\"}[30m])) * 100",
@@ -615,7 +664,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode='iowait',instance=~\"$node\"}[30m])) * 100",
@@ -628,7 +677,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode=~\".*irq\",instance=~\"$node\"}[30m])) * 100",
@@ -641,7 +690,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum (rate(node_cpu_seconds_total{mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq',instance=~\"$node\"}[30m])) * 100",
@@ -654,7 +703,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=~\"$node\"}[30m])) * 100",
@@ -671,7 +720,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -813,7 +862,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "node_memory_MemTotal_bytes{donor=\"$donor\", instance=~\"$node\"} - node_memory_MemFree_bytes{donor=\"$donor\", instance=~\"$node\"} - (node_memory_Cached_bytes{donor=\"$donor\", instance=~\"$node\"} + node_memory_Buffers_bytes{donor=\"$donor\", instance=~\"$node\"})",
@@ -826,7 +875,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "expr": "node_memory_Cached_bytes{instance=~\"$node\"} + node_memory_Buffers_bytes{instance=~\"$node\"}",
           "format": "time_series",
@@ -837,7 +886,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "expr": "node_memory_MemFree_bytes{instance=~\"$node\"}",
           "format": "time_series",
@@ -852,7 +901,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -940,7 +989,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m]) + irate(node_network_receive_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m])",
@@ -953,7 +1002,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "irate(node_network_receive_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m])",
@@ -966,7 +1015,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m])",
@@ -983,7 +1032,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1103,7 +1152,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "expr": "node_filesystem_size_bytes{instance=~\"$node\",device!~'rootfs', mountpoint='/'}",
           "format": "time_series",
@@ -1114,7 +1163,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "node_filesystem_size_bytes{donor=\"$donor\", instance=~\"$node\",device!~'rootfs', mountpoint='/'} - node_filesystem_avail_bytes{donor=\"$donor\", instance=~\"$node\",device!~'rootfs', mountpoint='/'}",
@@ -1131,7 +1180,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1279,7 +1328,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "(\r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"eth0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"venet0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"ens3\"}\r\n) +\r\n(\r\n  node_network_receive_bytes_total{instance=\"$node\", device=\"eth0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"venet0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"ens3\"}\r\n)\r\n",
@@ -1292,7 +1341,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "node_network_receive_bytes_total{instance=\"$node\", device=\"eth0\"} or node_network_transmit_bytes_total{instance=\"$node\", device=\"venet0\"} or node_network_transmit_bytes_total{instance=\"$node\", device=\"ens3\"}",
@@ -1305,7 +1354,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "node_network_transmit_bytes_total{donor=\"$donor\", instance=\"$node\", device=\"eth0\"} or node_network_transmit_bytes_total{donor=\"$donor\", instance=\"$node\", device=\"venet0\"} or node_network_transmit_bytes_total{donor=\"$donor\", instance=\"$node\", device=\"ens3\"}",
@@ -1335,7 +1384,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Upload Speed of each Inbound",
       "fieldConfig": {
@@ -1421,7 +1470,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1441,7 +1490,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Download Speed of each Inbound",
       "fieldConfig": {
@@ -1527,7 +1576,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -1547,7 +1596,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Number of unique users actively connected to the server. (Approximately)",
       "fieldConfig": {
@@ -1631,7 +1680,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1646,7 +1695,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1697,7 +1746,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1712,7 +1761,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Total number of connections established over time. This includes all connection attempts, including reconnections.",
       "fieldConfig": {
@@ -1797,7 +1846,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1812,7 +1861,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1863,7 +1912,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1878,7 +1927,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Average number of connections per unique user.",
       "fieldConfig": {
@@ -1963,7 +2012,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1978,7 +2027,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2029,7 +2078,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2057,7 +2106,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Number of requests blocked by routing rules over time period.",
       "fieldConfig": {
@@ -2142,7 +2191,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2157,7 +2206,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "description": "Percentage of requests that are blocked by routing rules.",
       "fieldConfig": {
@@ -2209,7 +2258,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_percentage{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2224,7 +2273,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2318,7 +2367,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} - xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2330,7 +2379,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "grafanacloud-prom"
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2358,7 +2407,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "grafanacloud-prom"
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2369,7 +2418,7 @@
           "custom": {
             "align": "center",
             "cellOptions": {
-              "type": "json-view"
+              "type": "auto"
             },
             "inspect": true
           },
@@ -2378,28 +2427,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "text"
-              }
-            ]
-          },
-          "unit": "string"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "config_link"
-            },
-            "properties": [
-              {
-                "id": "custom.width"
+                "color": "green"
               },
               {
-                "id": "displayName",
-                "value": "Config Link"
+                "color": "red",
+                "value": 80
               }
             ]
-          },
+          }
+        },
+        "overrides": [
           {
             "matcher": {
               "id": "byName",
@@ -2415,146 +2452,10 @@
                 }
               },
               {
-                "id": "unit",
-                "value": "none"
-              },
-              {
                 "id": "color",
                 "value": {
                   "mode": "continuous-GrYlRd"
                 }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "ip"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "country"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "region"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Region"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "config_host"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Domain Host"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "config_port"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Port"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "config_protocol"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "config_security"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "config_type"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Transport Type"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "instance"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Instance IP"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "job"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "machine_id"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
               }
             ]
           }
@@ -2566,9 +2467,9 @@
         "x": 0,
         "y": 86
       },
-      "id": 28,
+      "id": 26,
       "options": {
-        "cellHeight": "lg",
+        "cellHeight": "md",
         "footer": {
           "countRows": false,
           "enablePagination": true,
@@ -2589,32 +2490,69 @@
       "pluginVersion": "12.0.0-85518",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "bdi6c3kfflssge"
-          },
           "disableTextWrap": false,
-          "editorMode": "code",
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "vpn_config{country=~\"$country\", config_type=~\"$config_type\", donor=~\"$donor\", instance=~\"$instance\"}",
+          "expr": "vpn_config{donor=\"$donor\"}",
           "format": "table",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": true,
           "interval": "",
-          "key": "Q-d9a453c5-7e58-41d4-a1ee-f30c9f64bd98-0",
           "legendFormat": "__auto",
           "range": false,
           "refId": "A",
-          "useBackend": false
+          "useBackend": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          }
         }
       ],
-      "title": "Available VPN Configs",
+      "title": "VPN Configuration Links",
       "transformations": [
         {
-          "id": "labelsToFields",
+          "id": "organize",
           "options": {
-            "mode": "columns"
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "config_protocol": true,
+              "config_security": true,
+              "donor": true,
+              "ip": true,
+              "job": true,
+              "machine_id": true,
+              "region": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "Value": 15,
+              "__name__": 1,
+              "config_host": 4,
+              "config_link": 2,
+              "config_port": 5,
+              "config_protocol": 6,
+              "config_security": 7,
+              "config_type": 3,
+              "country": 8,
+              "donor": 9,
+              "instance": 10,
+              "ip": 11,
+              "job": 12,
+              "machine_id": 13,
+              "region": 14
+            },
+            "renameByName": {
+              "Value": "Delay (ms)",
+              "config_host": "Host Domain",
+              "config_link": "Config Link",
+              "config_port": "Port",
+              "config_type": "Transport",
+              "country": "Country",
+              "instance": "Instance IP"
+            }
           }
         },
         {
@@ -2623,74 +2561,22 @@
             "filters": [
               {
                 "config": {
-                  "id": "greater",
+                  "id": "notEqual",
                   "options": {
-                    "value": 0
+                    "value": "-1"
                   }
                 },
-                "fieldName": "Value"
+                "fieldName": "Delay (ms)"
               }
             ],
             "match": "any",
             "type": "include"
-          }
-        },
-        {
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "names": [
-                "Time",
-                "config_link",
-                "config_port",
-                "config_protocol",
-                "config_security",
-                "config_type",
-                "country",
-                "instance",
-                "ip",
-                "job",
-                "machine_id",
-                "region",
-                "Value",
-                "config_host"
-              ]
-            }
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true
-            },
-            "includeByName": {},
-            "indexByName": {
-              "Time": 13,
-              "Value": 1,
-              "config_host": 5,
-              "config_link": 0,
-              "config_port": 6,
-              "config_protocol": 7,
-              "config_security": 8,
-              "config_type": 9,
-              "country": 3,
-              "instance": 10,
-              "ip": 2,
-              "job": 11,
-              "machine_id": 12,
-              "region": 4
-            },
-            "renameByName": {
-              "Value": "Delay (ms)"
-            }
           }
         }
       ],
       "type": "table"
     }
   ],
-  "preload": false,
   "refresh": "5m",
   "schemaVersion": 41,
   "tags": [
@@ -2699,10 +2585,7 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "178.62.9.225",
-          "value": "178.62.9.225"
-        },
+        "current": {},
         "definition": "label_values(node_cpu_seconds_total,instance)",
         "name": "node",
         "options": [],
@@ -2716,10 +2599,7 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": "vmvm",
-          "value": "vmvm"
-        },
+        "current": {},
         "definition": "label_values(node_cpu_seconds_total,donor)",
         "label": "Donor",
         "name": "donor",
@@ -2734,14 +2614,7 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": [
-            "178.62.9.225"
-          ],
-          "value": [
-            "178.62.9.225"
-          ]
-        },
+        "current": {},
         "definition": "label_values(v2ray_up,instance)",
         "includeAll": true,
         "label": "Instance",
@@ -2758,17 +2631,13 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "label_values(vpn_config,country)",
-        "includeAll": true,
-        "name": "country",
+        "current": {},
+        "definition": "label_values($job)",
+        "name": "job",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(vpn_config,country)",
+          "query": "label_values($job)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -2776,17 +2645,13 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "label_values(vpn_config,config_type)",
-        "includeAll": true,
-        "name": "config_type",
+        "current": {},
+        "definition": "label_values($v2ray_traffic_uplink_bytes_total)",
+        "name": "v2ray_traffic_uplink_bytes_total",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(vpn_config,config_type)",
+          "query": "label_values($v2ray_traffic_uplink_bytes_total)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -2815,5 +2680,6 @@
   "timezone": "browser",
   "title": "CompassVPN Dashboard",
   "uid": "compassvpnorgdashboard",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }
