@@ -64,7 +64,7 @@
       }
     ]
   },
-  "description": "The CompassVPN Dashboard is a unified monitoring solution that combines server performance, Xray metrics, and VPN configurations into a single view.",
+  "description": "The CompassVPN Dashboard provides comprehensive real-time monitoring of VPN infrastructure, featuring server performance metrics, Xray traffic analytics, and VPN configuration management. Track system resources, user connections, bandwidth usage, and security metrics in a unified interface.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
