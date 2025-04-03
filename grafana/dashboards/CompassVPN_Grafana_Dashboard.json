@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_GRAFANACLOUD-COMPASSVPN-PROM",
-      "label": "grafanacloud-compassvpn-prom",
+      "label": "grafanacloud-COMPASSVPN-prom",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "12.0.0-85518"
+      "version": "12.0.0-85518.patch3-85676"
     },
     {
       "type": "panel",
@@ -326,7 +326,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -465,7 +465,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -633,7 +633,7 @@
           "sort": "desc"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -857,7 +857,7 @@
           "sort": "desc"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -984,7 +984,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1147,7 +1147,7 @@
           "sort": "desc"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1323,7 +1323,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1465,7 +1465,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1484,7 +1484,7 @@
           "useBackend": false
         }
       ],
-      "title": "UL Speed of Inbounds",
+      "title": "Upload Speed of Inbounds",
       "type": "timeseries"
     },
     {
@@ -1571,7 +1571,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1675,7 +1675,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1741,7 +1741,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1841,7 +1841,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -1907,7 +1907,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -2007,7 +2007,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -2073,7 +2073,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -2186,7 +2186,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -2253,7 +2253,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -2362,7 +2362,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "datasource": {
@@ -2487,9 +2487,13 @@
           }
         ]
       },
-      "pluginVersion": "12.0.0-85518",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          },
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
@@ -2502,11 +2506,7 @@
           "legendFormat": "__auto",
           "range": false,
           "refId": "A",
-          "useBackend": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
-          }
+          "useBackend": false
         }
       ],
       "title": "VPN Configuration Links",
@@ -2629,34 +2629,6 @@
         "refresh": 1,
         "regex": "",
         "type": "query"
-      },
-      {
-        "current": {},
-        "definition": "label_values($job)",
-        "name": "job",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values($job)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {},
-        "definition": "label_values($v2ray_traffic_uplink_bytes_total)",
-        "name": "v2ray_traffic_uplink_bytes_total",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values($v2ray_traffic_uplink_bytes_total)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
       }
     ]
   },
@@ -2680,6 +2652,6 @@
   "timezone": "browser",
   "title": "CompassVPN Dashboard",
   "uid": "compassvpnorgdashboard",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
