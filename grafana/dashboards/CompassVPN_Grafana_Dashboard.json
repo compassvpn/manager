@@ -2,7 +2,15 @@
   "__inputs": [
     {
       "name": "DS_GRAFANACLOUD-COMPASSVPN-PROM",
-      "label": "grafanacloud-COMPASSVPN-prom",
+      "label": "grafanacloud-compassvpn-prom",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_GRAFANACLOUD-USAGE",
+      "label": "grafanacloud-usage",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -15,7 +23,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "12.0.0-85518.patch3-85676"
+      "version": "12.0.0-85518.patch7-85777"
     },
     {
       "type": "panel",
@@ -85,7 +93,7 @@
   ],
   "panels": [
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -93,421 +101,520 @@
         "y": 0
       },
       "id": 12,
-      "panels": [],
-      "title": "Overview",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto",
-              "wrapText": true
-            },
-            "inspect": false
-          },
-          "decimals": 2,
-          "displayName": "",
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Time"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Time"
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "__name__"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              },
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "instance"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Instance"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "job"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Job"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #A"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Uptime"
-              },
-              {
-                "id": "unit",
-                "value": "s"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #B"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Downlink"
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              },
-              {
-                "id": "decimals",
-                "value": 3
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #C"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Uplink"
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              },
-              {
-                "id": "decimals",
-                "value": 3
-              },
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "donor"
-            },
-            "properties": [
-              {
-                "id": "custom.align",
-                "value": "center"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 1
-      },
-      "id": 10,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
-      "targets": [
+      "panels": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
-          "editorMode": "code",
-          "expr": "v2ray_uptime_seconds{donor=\"$donor\", instance=~\"$instance\"}",
-          "format": "table",
-          "instant": true,
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
           },
-          "expr": "sum by (instance) (increase(v2ray_traffic_downlink_bytes_total{job=~\"$job\",instance=~\"$instance\",dimension=\"inbound\"}[$__range]))",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          "gridPos": {
+            "h": 12,
+            "w": 3,
+            "x": 0,
+            "y": 1
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "{\"$v2ray_traffic_uplink_bytes_total\", job=~\"$job\", instance=~\"$instance\"}",
-          "format": "table",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "C",
-          "useBackend": false
-        }
-      ],
-      "title": "Real-Time Overview",
-      "transformations": [
-        {
-          "id": "merge",
+          "id": 27,
           "options": {
-            "reducers": []
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "Total Bandwidth",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 50,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
+            "displayLabels": [
+              "name",
+              "value"
+            ],
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "values": [
+                "value"
+              ]
             },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
             },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
             }
           },
-          "fieldMinMax": false,
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
+          "pluginVersion": "12.0.0-85518.patch7-85777",
+          "targets": [
+            {
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "count((v2ray_up == 1) and ignoring(v2ray_up) v2ray_up)",
+              "format": "time_series",
+              "instant": false,
+              "legendFormat": "Up",
+              "range": true,
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              }
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "expr": "(count(v2ray_up) != 1) and ignoring(v2ray_up) v2ray_up",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "Down",
+              "range": true,
+              "refId": "B",
+              "useBackend": false
+            }
+          ],
+          "title": "Up / Down Instances",
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "text",
+                "mode": "fixed"
+              },
+              "custom": {
+                "align": "center",
+                "cellOptions": {
+                  "type": "auto",
+                  "wrapText": false
+                },
+                "inspect": true
+              },
+              "decimals": 1,
+              "fieldMinMax": false,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              }
+            },
+            "overrides": [
               {
-                "color": "green"
+                "matcher": {
+                  "id": "byName",
+                  "options": "Value #A"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "s"
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Value #B"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "decbytes"
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Value #C"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "decbytes"
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "decbytes"
+                  }
+                ]
               }
             ]
           },
-          "unit": "Bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 9
-      },
-      "id": 11,
-      "options": {
-        "legend": {
-          "calcs": [
-            "min",
-            "mean",
-            "max",
-            "lastNotNull"
+          "gridPos": {
+            "h": 12,
+            "w": 21,
+            "x": 3,
+            "y": 1
+          },
+          "id": 29,
+          "options": {
+            "cellHeight": "md",
+            "footer": {
+              "countRows": false,
+              "enablePagination": true,
+              "fields": [
+                "Value #B",
+                "Value #C",
+                "Total"
+              ],
+              "reducer": [
+                "sum"
+              ],
+              "show": true
+            },
+            "frameIndex": 0,
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Total"
+              }
+            ]
+          },
+          "pluginVersion": "12.0.0-85518.patch7-85777",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "v2ray_uptime_seconds{donor=~\"$donor\", instance=~\"$instance\"}",
+              "format": "table",
+              "fullMetaSearch": false,
+              "includeNullMetadata": false,
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A",
+              "useBackend": false
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum by (instance) (increase(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]))",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum by (instance) (increase(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]))",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "C"
+            }
           ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
+          "title": "Overview",
+          "transformations": [
+            {
+              "id": "joinByField",
+              "options": {
+                "byField": "instance",
+                "mode": "outer"
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time 1": true,
+                  "Time 2": true,
+                  "Time 3": true,
+                  "Total": true,
+                  "__name__": true,
+                  "dimension 1": true,
+                  "dimension 2": true,
+                  "donor": false,
+                  "donor 1": false,
+                  "donor 2": true,
+                  "donor 3": true,
+                  "job": true,
+                  "job 1": true,
+                  "job 2": true,
+                  "job 3": true,
+                  "target 1": true,
+                  "target 2": true
+                },
+                "includeByName": {},
+                "indexByName": {
+                  "Time 1": 2,
+                  "Time 2": 5,
+                  "Time 3": 7,
+                  "Value #A": 4,
+                  "Value #B": 6,
+                  "Value #C": 8,
+                  "__name__": 3,
+                  "donor": 0,
+                  "instance": 1,
+                  "job": 9
+                },
+                "renameByName": {
+                  "Value #A": "Uptime",
+                  "Value #B": "Downlink",
+                  "Value #C": "Uplink",
+                  "donor": "Donor",
+                  "donor 1": "",
+                  "instance": "Instance IP"
+                }
+              }
+            },
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Total",
+                "binary": {
+                  "left": {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Uplink"
+                    }
+                  },
+                  "right": {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Downlink"
+                    }
+                  }
+                },
+                "mode": "binary",
+                "reduce": {
+                  "include": [
+                    "Downlink",
+                    "Uplink"
+                  ],
+                  "reducer": "sum"
+                },
+                "replaceFields": false
+              }
+            }
+          ],
+          "type": "table"
         },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
-      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
-          "editorMode": "code",
-          "expr": "sum(irate(v2ray_traffic_downlink_bytes_total{donor=\"$donor\", instance=~\"$instance\"}[30m]))",
-          "interval": "",
-          "legendFormat": "Downlink",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "shades"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "Total Bandwidth",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 75,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "links": [],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              },
+              "unit": "Bps"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": ".*Uplink.*"
+                },
+                "properties": [
+                  {
+                    "id": "custom.transform",
+                    "value": "negative-Y"
+                  },
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-yellow",
+                      "mode": "shades"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": ".*Downlink.*"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-green",
+                      "mode": "shades"
+                    }
+                  }
+                ]
+              }
+            ]
           },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(irate(v2ray_traffic_uplink_bytes_total{job=~\"$job\",instance=~\"$instance\"}[30m]))",
-          "interval": "",
-          "legendFormat": "Uplink",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 77
           },
-          "editorMode": "code",
-          "expr": "sum(irate(v2ray_traffic_downlink_bytes_total{donor=\"$donor\", instance=~\"$instance\"}[30m])) \r\n+\r\nsum(irate(v2ray_traffic_uplink_bytes_total{job=~\"$job\", instance=~\"$instance\"}[30m]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Total Bandwidth",
-          "range": true,
-          "refId": "C"
+          "id": 11,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "lastNotNull"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.0.0-85518.patch7-85777",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(irate(v2ray_traffic_downlink_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])) by (instance)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{instance}} - Downlink",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum(irate(v2ray_traffic_uplink_bytes_total{donor=~\"$donor\",instance=~\"$instance\"}[1h])) by (instance)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{instance}} - Uplink",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "Total Bandwidth",
+          "type": "timeseries"
         }
       ],
-      "title": "Total Bandwidth",
-      "type": "timeseries"
+      "title": "Overview",
+      "type": "row"
     },
     {
       "collapsed": false,
@@ -515,7 +622,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 1
       },
       "id": 8,
       "panels": [],
@@ -541,7 +648,7 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 50,
+            "fillOpacity": 75,
             "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
@@ -604,6 +711,29 @@
                 "value": 20
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Idle.*"
+            },
+            "properties": [
+              {
+                "id": "custom.gradientMode",
+                "value": "opacity"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 20
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ccccdb80",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -611,7 +741,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 2
       },
       "id": 3,
       "options": {
@@ -633,7 +763,7 @@
           "sort": "desc"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -641,10 +771,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=\"$donor\", mode=\"system\",instance=~\"$node\"}[30m])) * 100",
+          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode=\"system\"}[1h])) * 100",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "System",
+          "legendFormat": "{{instance}} - System",
           "range": true,
           "refId": "A"
         },
@@ -654,10 +784,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode='user',instance=~\"$node\"}[30m])) * 100",
+          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode='user'}[1h])) * 100",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "User",
+          "legendFormat": "{{instance}} - User",
           "range": true,
           "refId": "B"
         },
@@ -667,10 +797,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode='iowait',instance=~\"$node\"}[30m])) * 100",
+          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode='iowait',instance=~\"$instance\"}[1h])) * 100",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "IOwait",
+          "legendFormat": "{{instance}} - IOwait",
           "range": true,
           "refId": "C"
         },
@@ -680,10 +810,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "sum by (instance)(rate(node_cpu_seconds_total{mode=~\".*irq\",instance=~\"$node\"}[30m])) * 100",
+          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode=~\".*irq\",instance=~\"$instance\"}[1h])) * 100",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "IRQ",
+          "legendFormat": "{{instance}} - IRQ",
           "range": true,
           "refId": "D"
         },
@@ -693,10 +823,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "sum (rate(node_cpu_seconds_total{mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq',instance=~\"$node\"}[30m])) * 100",
+          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq'}[1h])) * 100",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Other",
+          "legendFormat": "{{instance}} - Used",
           "range": true,
           "refId": "E"
         },
@@ -706,10 +836,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=~\"$node\"}[30m])) * 100",
+          "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode='idle', instance=~\"$instance\"}[1h])) * 100",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Idle",
+          "legendFormat": "{{instance}} - Idle",
           "range": true,
           "refId": "F"
         }
@@ -722,6 +852,7 @@
         "type": "prometheus",
         "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
+      "description": "Basic memory usage",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -736,7 +867,7 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 75,
+            "fillOpacity": 50,
             "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
@@ -760,7 +891,9 @@
               "mode": "off"
             }
           },
+          "links": [],
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -773,23 +906,38 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
             "matcher": {
-              "id": "byName",
-              "options": "RAM Free"
+              "id": "byRegexp",
+              "options": ".*Free.*"
             },
             "properties": [
               {
-                "id": "custom.fillOpacity",
-                "value": 20
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
               },
+              {
+                "id": "custom.fillOpacity",
+                "value": 25
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Buffer.*"
+            },
+            "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "#ccccdb33",
+                  "fixedColor": "dark-yellow",
                   "mode": "fixed"
                 }
               }
@@ -797,8 +945,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "RAM Used"
+              "id": "byRegexp",
+              "options": ".*Used.*"
             },
             "properties": [
               {
@@ -809,25 +957,6 @@
                 }
               }
             ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "RAM Cache + Buffer"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-orange",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 20
-              }
-            ]
           }
         ]
       },
@@ -835,9 +964,9 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 2
       },
-      "id": 4,
+      "id": 28,
       "options": {
         "legend": {
           "calcs": [
@@ -854,48 +983,57 @@
         "tooltip": {
           "hideZeros": false,
           "mode": "multi",
-          "sort": "desc"
+          "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "node_memory_MemTotal_bytes{donor=\"$donor\", instance=~\"$node\"} - node_memory_MemFree_bytes{donor=\"$donor\", instance=~\"$node\"} - (node_memory_Cached_bytes{donor=\"$donor\", instance=~\"$node\"} + node_memory_Buffers_bytes{donor=\"$donor\", instance=~\"$node\"})",
+          "expr": "node_memory_MemTotal_bytes{donor=~\"$donor\", instance=~\"$instance\"} - node_memory_MemFree_bytes{donor=~\"$donor\", instance=~\"$instance\"} - (node_memory_Cached_bytes{donor=~\"$donor\", instance=~\"$instance\"} + node_memory_Buffers_bytes{donor=~\"$donor\", instance=~\"$instance\"})",
           "format": "time_series",
+          "hide": false,
           "intervalFactor": 1,
-          "legendFormat": "RAM Used",
+          "legendFormat": "{{instance}} - RAM Used",
           "range": true,
-          "refId": "A"
+          "refId": "B",
+          "step": 240
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+            "uid": "${DS_GRAFANACLOUD-USAGE}"
           },
-          "expr": "node_memory_Cached_bytes{instance=~\"$node\"} + node_memory_Buffers_bytes{instance=~\"$node\"}",
+          "editorMode": "code",
+          "expr": "node_memory_Cached_bytes{donor=~\"$donor\", instance=~\"$instance\"} + node_memory_Buffers_bytes{donor=~\"$donor\", instance=~\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "RAM Cache + Buffer",
-          "refId": "B"
+          "legendFormat": "{{instance}} - RAM C+B",
+          "range": true,
+          "refId": "C",
+          "step": 240
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+            "uid": "${datasource}"
           },
-          "expr": "node_memory_MemFree_bytes{instance=~\"$node\"}",
+          "editorMode": "code",
+          "expr": "node_memory_MemFree_bytes{donor=~\"$donor\", instance=~\"$instance\"}",
           "format": "time_series",
+          "hide": false,
           "intervalFactor": 1,
-          "legendFormat": "RAM Free",
-          "refId": "C"
+          "legendFormat": "{{instance}} - RAM Free",
+          "range": true,
+          "refId": "D",
+          "step": 240
         }
       ],
-      "title": "Memory",
+      "title": "Memory Basic",
       "type": "timeseries"
     },
     {
@@ -941,6 +1079,7 @@
               "mode": "off"
             }
           },
+          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -954,7 +1093,7 @@
               }
             ]
           },
-          "unit": "decbits"
+          "unit": "Bps"
         },
         "overrides": []
       },
@@ -962,7 +1101,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 10
       },
       "id": 5,
       "options": {
@@ -984,197 +1123,63 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
+          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_transmit_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m]) + irate(node_network_receive_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m])",
+          "expr": "irate(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h]) + irate(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])",
+          "fullMetaSearch": false,
           "hide": false,
+          "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "{{device}} - Total",
+          "legendFormat": "{{instance}} - {{device}} - Total",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
+          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m])",
+          "expr": "irate(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])",
           "format": "time_series",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
           "intervalFactor": 1,
-          "legendFormat": "{{device}} - Receive",
+          "legendFormat": "{{instance}} - {{device}} - Receive",
           "range": true,
-          "refId": "B"
+          "refId": "B",
+          "useBackend": false
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
+          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_transmit_bytes_total{donor=\"$donor\", instance=~\"$node\"}[30m])",
+          "expr": "irate(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])",
           "format": "time_series",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
           "intervalFactor": 1,
-          "legendFormat": "{{device}} - Transmit",
+          "legendFormat": "{{instance}} - {{device}} - Transmit",
           "range": true,
-          "refId": "C"
+          "refId": "C",
+          "useBackend": false
         }
       ],
       "title": "Network",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 75,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Total"
-            },
-            "properties": [
-              {
-                "id": "custom.fillOpacity",
-                "value": 20
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#ccccdb33",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "root - /"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 26
-      },
-      "id": 6,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "desc"
-        }
-      },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
-          },
-          "expr": "node_filesystem_size_bytes{instance=~\"$node\",device!~'rootfs', mountpoint='/'}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "Total",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
-          },
-          "editorMode": "code",
-          "expr": "node_filesystem_size_bytes{donor=\"$donor\", instance=~\"$node\",device!~'rootfs', mountpoint='/'} - node_filesystem_avail_bytes{donor=\"$donor\", instance=~\"$node\",device!~'rootfs', mountpoint='/'}",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "root - /",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Disk Usage",
       "type": "timeseries"
     },
     {
@@ -1223,8 +1228,8 @@
               "mode": "off"
             }
           },
-          "fieldMinMax": false,
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1237,23 +1242,19 @@
               }
             ]
           },
-          "unit": "decbits"
+          "unit": "decbytes"
         },
         "overrides": [
           {
             "matcher": {
-              "id": "byName",
-              "options": "eth0 - Receive"
+              "id": "byRegexp",
+              "options": ".*Total.*"
             },
             "properties": [
               {
-                "id": "custom.drawStyle",
-                "value": "line"
-              },
-              {
                 "id": "color",
                 "value": {
-                  "fixedColor": "light-blue",
+                  "fixedColor": "dark-green",
                   "mode": "fixed"
                 }
               }
@@ -1261,39 +1262,20 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "eth0 - Transmit"
-            },
-            "properties": [
-              {
-                "id": "custom.drawStyle",
-                "value": "line"
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "light-blue",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Total"
+              "id": "byRegexp",
+              "options": ".*Used.*"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "dark-blue",
+                  "fixedColor": "dark-red",
                   "mode": "fixed"
                 }
               },
               {
-                "id": "custom.gradientMode",
-                "value": "opacity"
+                "id": "custom.fillOpacity",
+                "value": 75
               }
             ]
           }
@@ -1301,11 +1283,11 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 34
+        "w": 12,
+        "x": 12,
+        "y": 10
       },
-      "id": 7,
+      "id": 6,
       "options": {
         "legend": {
           "calcs": [
@@ -1314,16 +1296,16 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "sortBy": "Total",
-          "sortDesc": false
+          "sortBy": "Last *",
+          "sortDesc": true
         },
         "tooltip": {
           "hideZeros": false,
-          "mode": "multi",
+          "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1331,10 +1313,10 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "(\r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"eth0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"venet0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"ens3\"}\r\n) +\r\n(\r\n  node_network_receive_bytes_total{instance=\"$node\", device=\"eth0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"venet0\"} or \r\n  node_network_transmit_bytes_total{instance=\"$node\", device=\"ens3\"}\r\n)\r\n",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Total",
+          "expr": "node_filesystem_size_bytes{donor=~\"$donor\", instance=~\"$instance\",device!~'rootfs', mountpoint='/'} - node_filesystem_avail_bytes{donor=~\"$donor\", instance=~\"$instance\",device!~'rootfs', mountpoint='/'}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}} - Used",
           "range": true,
           "refId": "A"
         },
@@ -1344,29 +1326,175 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "editorMode": "code",
-          "expr": "node_network_receive_bytes_total{instance=\"$node\", device=\"eth0\"} or node_network_transmit_bytes_total{instance=\"$node\", device=\"venet0\"} or node_network_transmit_bytes_total{instance=\"$node\", device=\"ens3\"}",
+          "expr": "node_filesystem_size_bytes{donor=~\"$donor\", instance=~\"$instance\", device!~'rootfs', mountpoint='/'}",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{device}} - Transmit",
+          "legendFormat": "{{instance}} - Total",
           "range": true,
           "refId": "B"
+        }
+      ],
+      "title": "Disk Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+      },
+      "description": "Total Network Usage for each device and donor",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#ccccdb80",
+            "mode": "fixed"
+          },
+          "decimals": 1,
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "decbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Total.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Transmit.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Receive.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "shades"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "same_as_value",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by(instance) (\r\n  increase(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) +\r\n  increase(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range])\r\n)\r\n",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{instance}} - Total",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
+          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "node_network_transmit_bytes_total{donor=\"$donor\", instance=\"$node\", device=\"eth0\"} or node_network_transmit_bytes_total{donor=\"$donor\", instance=\"$node\", device=\"venet0\"} or node_network_transmit_bytes_total{donor=\"$donor\", instance=\"$node\", device=\"ens3\"}",
+          "exemplar": false,
+          "expr": "increase(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) > 100000000",
           "format": "time_series",
+          "fullMetaSearch": false,
+          "includeNullMetadata": false,
+          "instant": false,
           "intervalFactor": 1,
-          "legendFormat": "{{device}} - Receive",
+          "legendFormat": "{{instance}} - {{device}} - Transmit",
           "range": true,
-          "refId": "C"
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "increase(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) > 100000000",
+          "format": "time_series",
+          "fullMetaSearch": false,
+          "includeNullMetadata": false,
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}} - {{device}} - Receive",
+          "range": true,
+          "refId": "C",
+          "useBackend": false
         }
       ],
       "title": "Total Network Usage",
-      "type": "timeseries"
+      "type": "stat"
     },
     {
       "collapsed": false,
@@ -1374,7 +1502,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 42
+        "y": 29
       },
       "id": 9,
       "panels": [],
@@ -1390,7 +1518,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "fixed"
           },
           "custom": {
             "axisBorderShow": false,
@@ -1437,13 +1565,59 @@
           },
           "unit": "Bps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*tcp.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*hu.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*xhttp.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "shades"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 0,
-        "y": 43
+        "y": 30
       },
       "id": 14,
       "options": {
@@ -1465,7 +1639,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1474,11 +1648,11 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(v2ray_traffic_uplink_bytes_total{donor=\"$donor\", instance=~\"$instance\", dimension=\"inbound\", target!=\"doko\"}[30m])",
+          "expr": "irate(v2ray_traffic_uplink_bytes_total{donor=~\"$donor\", instance=~\"$instance\", dimension=~\"inbound\", target!=\"doko\"}[1h])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "interval": "",
-          "legendFormat": "{{target}}",
+          "legendFormat": "{{instance}} - {{target}}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -1496,7 +1670,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "fixedColor": "text",
+            "mode": "fixed"
           },
           "custom": {
             "axisBorderShow": false,
@@ -1543,13 +1718,59 @@
           },
           "unit": "Bps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*tcp.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*hu.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*xhttp.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "shades"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 12,
-        "y": 43
+        "y": 30
       },
       "id": 13,
       "options": {
@@ -1571,7 +1792,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1580,11 +1801,11 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "irate(v2ray_traffic_downlink_bytes_total{donor=\"$donor\", instance=~\"$instance\", dimension=\"inbound\", target!=\"doko\"}[30m])",
+          "expr": "irate(v2ray_traffic_downlink_bytes_total{donor=~\"$donor\", instance=~\"$instance\", dimension=~\"inbound\", target!=\"doko\"}[1h])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "interval": "",
-          "legendFormat": "{{target}}",
+          "legendFormat": "{{instance}} - {{target}}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -1603,7 +1824,7 @@
         "defaults": {
           "color": {
             "fixedColor": "dark-green",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "custom": {
             "axisBorderShow": false,
@@ -1652,10 +1873,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 20,
         "x": 0,
-        "y": 51
+        "y": 40
       },
       "id": 15,
       "options": {
@@ -1675,7 +1896,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1697,11 +1918,12 @@
         "type": "prometheus",
         "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
       },
+      "description": "Approximation of current unique users for the last 2 minutes.",
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "dark-green",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "decimals": 0,
           "mappings": [],
@@ -1718,18 +1940,18 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 4,
         "x": 20,
-        "y": 51
+        "y": 40
       },
       "id": 18,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
-        "percentChangeColorMode": "standard",
+        "percentChangeColorMode": "same_as_value",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1738,10 +1960,10 @@
           "values": false
         },
         "showPercentChange": false,
-        "textMode": "auto",
+        "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1750,7 +1972,7 @@
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
-          "legendFormat": "{{instance}} - {{donor}}",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -1768,7 +1990,7 @@
         "defaults": {
           "color": {
             "fixedColor": "dark-blue",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "custom": {
             "axisBorderShow": false,
@@ -1817,10 +2039,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 20,
         "x": 0,
-        "y": 59
+        "y": 49
       },
       "id": 16,
       "options": {
@@ -1841,7 +2063,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1867,7 +2089,7 @@
         "defaults": {
           "color": {
             "fixedColor": "dark-blue",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "decimals": 0,
           "mappings": [],
@@ -1884,16 +2106,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 4,
         "x": 20,
-        "y": 59
+        "y": 49
       },
       "id": 19,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "percentChangeColorMode": "same_as_value",
         "reduceOptions": {
@@ -1907,7 +2129,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -1916,7 +2138,7 @@
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
-          "legendFormat": "{{instance}} - {{donor}}",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -1934,7 +2156,7 @@
         "defaults": {
           "color": {
             "fixedColor": "#917400",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "custom": {
             "axisBorderShow": false,
@@ -1983,10 +2205,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 20,
         "x": 0,
-        "y": 67
+        "y": 58
       },
       "id": 17,
       "options": {
@@ -2007,7 +2229,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -2050,16 +2272,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 4,
         "x": 20,
-        "y": 67
+        "y": 58
       },
       "id": 20,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
@@ -2073,7 +2295,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -2082,7 +2304,7 @@
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
-          "legendFormat": "{{instance}} - {{donor}}",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -2096,7 +2318,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 67
       },
       "id": 21,
       "panels": [],
@@ -2113,7 +2335,7 @@
         "defaults": {
           "color": {
             "fixedColor": "dark-red",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "custom": {
             "axisBorderShow": false,
@@ -2163,10 +2385,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 9,
         "x": 0,
-        "y": 76
+        "y": 68
       },
       "id": 22,
       "options": {
@@ -2186,7 +2408,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -2213,7 +2435,7 @@
         "defaults": {
           "color": {
             "fixedColor": "dark-red",
-            "mode": "fixed"
+            "mode": "shades"
           },
           "decimals": 1,
           "mappings": [],
@@ -2230,16 +2452,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 6,
         "x": 9,
-        "y": 76
+        "y": 68
       },
       "id": 23,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
@@ -2253,7 +2475,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -2262,7 +2484,7 @@
           },
           "editorMode": "code",
           "expr": "xray_blocked_percentage{donor=~\"$donor\", instance=~\"$instance\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -2290,36 +2512,35 @@
           },
           "decimals": 0,
           "fieldMinMax": false,
-          "mappings": [],
-          "unit": "short"
+          "mappings": []
         },
         "overrides": [
           {
             "matcher": {
-              "id": "byName",
-              "options": "Blocked"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Allowed"
+              "id": "byRegexp",
+              "options": ".*Allowed.*"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
                   "fixedColor": "dark-green",
-                  "mode": "fixed"
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Blocked.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "shades"
                 }
               }
             ]
@@ -2327,10 +2548,10 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 9,
         "x": 15,
-        "y": 76
+        "y": 68
       },
       "id": 24,
       "options": {
@@ -2362,7 +2583,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -2372,7 +2593,7 @@
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} - xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
           "hide": false,
-          "legendFormat": "Allowed",
+          "legendFormat": "{{instance}} - Allowed",
           "range": true,
           "refId": "B"
         },
@@ -2383,7 +2604,7 @@
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
-          "legendFormat": "Blocked",
+          "legendFormat": "{{instance}} - Blocked",
           "range": true,
           "refId": "A"
         }
@@ -2397,7 +2618,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 85
+        "y": 78
       },
       "id": 25,
       "panels": [],
@@ -2462,21 +2683,19 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 16,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 79
       },
       "id": 26,
       "options": {
         "cellHeight": "md",
         "footer": {
-          "countRows": false,
+          "countRows": true,
           "enablePagination": true,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": [],
           "show": false
         },
         "showHeader": true,
@@ -2487,7 +2706,7 @@
           }
         ]
       },
-      "pluginVersion": "12.0.0-85518.patch3-85676",
+      "pluginVersion": "12.0.0-85518.patch7-85777",
       "targets": [
         {
           "datasource": {
@@ -2495,9 +2714,9 @@
             "uid": "${DS_GRAFANACLOUD-COMPASSVPN-PROM}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "vpn_config{donor=\"$donor\"}",
+          "expr": "vpn_config{donor=~\"$donor\", instance=~\"$instance\"}",
           "format": "table",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -2585,28 +2804,17 @@
   "templating": {
     "list": [
       {
+        "allowCustomValue": false,
         "current": {},
-        "definition": "label_values(node_cpu_seconds_total,instance)",
-        "name": "node",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(node_cpu_seconds_total,instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {},
-        "definition": "label_values(node_cpu_seconds_total,donor)",
+        "definition": "label_values(donor)",
+        "description": "",
+        "includeAll": true,
         "label": "Donor",
         "name": "donor",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(node_cpu_seconds_total,donor)",
+          "query": "label_values(donor)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -2615,19 +2823,30 @@
       },
       {
         "current": {},
-        "definition": "label_values(v2ray_up,instance)",
+        "hide": 2,
+        "label": "Datasource",
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "query_result(topk(100, increase(node_network_receive_bytes_total[1d])))",
         "includeAll": true,
         "label": "Instance",
-        "multi": true,
         "name": "instance",
         "options": [],
         "query": {
-          "qryType": 1,
-          "query": "label_values(v2ray_up,instance)",
+          "qryType": 3,
+          "query": "query_result(topk(100, increase(node_network_receive_bytes_total[1d])))",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "",
+        "regex": "/instance=\"([^\"]+)\"/",
         "type": "query"
       }
     ]
@@ -2641,17 +2860,17 @@
       "1m",
       "5m",
       "15m",
+      "30m",
       "1h",
+      "2h",
       "4h",
-      "1d",
-      "2d",
-      "1w",
-      "1m"
+      "12h",
+      "1d"
     ]
   },
   "timezone": "browser",
   "title": "CompassVPN Dashboard",
   "uid": "compassvpnorgdashboard",
-  "version": 2,
+  "version": 78,
   "weekStart": ""
 }
