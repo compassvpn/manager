@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
+      "name": "DS_PTOMETHEUS",
+      "label": "prometheus",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -100,7 +100,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -157,7 +157,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -171,7 +171,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -192,7 +192,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -319,7 +319,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -337,7 +337,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -352,7 +352,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -455,7 +455,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -576,7 +576,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -592,7 +592,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -623,7 +623,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -759,7 +759,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode=\"system\"}[1h])) * 100",
@@ -772,7 +772,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode='user'}[1h])) * 100",
@@ -785,7 +785,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode='iowait',instance=~\"$instance\"}[1h])) * 100",
@@ -798,7 +798,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode=~\".*irq\",instance=~\"$instance\"}[1h])) * 100",
@@ -811,7 +811,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq'}[1h])) * 100",
@@ -824,7 +824,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode='idle', instance=~\"$instance\"}[1h])) * 100",
@@ -841,7 +841,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Basic memory usage",
       "fieldConfig": {
@@ -997,7 +997,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GRAFANACLOUD-USAGE}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "node_memory_Cached_bytes{donor=~\"$donor\", instance=~\"$instance\"} + node_memory_Buffers_bytes{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1030,7 +1030,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1077,16 +1077,58 @@
             "steps": [
               {
                 "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
           "unit": "Bps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Total.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Transmit.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*Receive.*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "shades"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -1119,11 +1161,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h]) + irate(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])",
+          "expr": "irate(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) + irate(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) > 1024",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -1136,11 +1178,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])",
+          "expr": "irate(node_network_receive_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) > 1024",
           "format": "time_series",
           "fullMetaSearch": false,
           "hide": false,
@@ -1154,11 +1196,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[1h])",
+          "expr": "irate(node_network_transmit_bytes_total{donor=~\"$donor\", instance=~\"$instance\"}[$__range]) > 1024",
           "format": "time_series",
           "fullMetaSearch": false,
           "hide": false,
@@ -1176,7 +1218,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1301,7 +1343,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "node_filesystem_size_bytes{donor=~\"$donor\", instance=~\"$instance\",device!~'rootfs', mountpoint='/'} - node_filesystem_avail_bytes{donor=~\"$donor\", instance=~\"$instance\",device!~'rootfs', mountpoint='/'}",
@@ -1314,7 +1356,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "node_filesystem_size_bytes{donor=~\"$donor\", instance=~\"$instance\", device!~'rootfs', mountpoint='/'}",
@@ -1331,7 +1373,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Total Network Usage for each device and donor",
       "fieldConfig": {
@@ -1430,7 +1472,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1448,7 +1490,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1467,7 +1509,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1503,7 +1545,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Upload Speed of each Inbound",
       "fieldConfig": {
@@ -1635,7 +1677,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1655,7 +1697,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Download Speed of each Inbound",
       "fieldConfig": {
@@ -1788,7 +1830,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -1808,7 +1850,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Number of unique users actively connected to the server. (Approximately)",
       "fieldConfig": {
@@ -1892,7 +1934,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1907,7 +1949,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Approximation of current unique users for the last 2 minutes.",
       "fieldConfig": {
@@ -1959,7 +2001,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1974,7 +2016,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Total number of connections established over time. This includes all connection attempts, including reconnections.",
       "fieldConfig": {
@@ -2059,7 +2101,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2074,7 +2116,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2125,7 +2167,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2140,7 +2182,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Average number of connections per unique user.",
       "fieldConfig": {
@@ -2225,7 +2267,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2240,7 +2282,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2291,7 +2333,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2319,7 +2361,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Number of requests blocked by routing rules over time period.",
       "fieldConfig": {
@@ -2404,7 +2446,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2419,7 +2461,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "description": "Percentage of requests that are blocked by routing rules.",
       "fieldConfig": {
@@ -2471,7 +2513,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_percentage{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2486,7 +2528,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2579,7 +2621,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} - xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2591,7 +2633,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2619,7 +2661,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "${DS_PTOMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2702,7 +2744,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${DS_PTOMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -2862,6 +2904,6 @@
   "timezone": "browser",
   "title": "CompassVPN Dashboard",
   "uid": "compassvpnorgdashboard",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
