@@ -1,75 +1,175 @@
 # Compass VPN Manager
 
-For collecting the metrics from CompassVPN agent(s), you can either use a free Grafana Cloud account or deploy a Prometheus Server+Pushgateway+Grafana using the instructions below.
+For collecting the metrics from CompassVPN agent(s), you can either use a free Grafana Cloud account or deploy a Prometheus Server+Pushgateway+Grafana using the instructions below. Choose the option that best suits your needs based on your infrastructure and requirements. Option 1 _(Grafana Cloud)_ is reccomended for simplicity.
 
-## Option 1: Use Garafana Cloud
+### Read the comprehensive guide on our website: https://www.compassvpn.org/installation/manager-setup/
 
-1. Create a new Grafana Cloud account: https://grafana.com/auth/sign-up/create-use
-2. Login to your newly created account: https://\<your-username>\.grafana.net
-3. Then go to the following page and create a new token (https://\<your-username\>.grafana.net/connections/add-new-connection/hmInstancePromId)
-   ![2](https://github.com/user-attachments/assets/16d6eebf-a3f9-4abc-829d-98d895d07c4d)
-4. We need "url", "username" and "password" from the previous step. 
-   ![1](https://github.com/user-attachments/assets/7610c686-7bf8-46cc-ba20-7a3109f5f4e2)
+---
 
-In the agent .env file, use them as follows
-   * GRAFANA_AGENT_REMOTE_WRITE_URL=\<url\>
-   * GRAFANA_AGENT_REMOTE_WRITE_USER=\<username\>
-   * GRAFANA_AGENT_REMOTE_WRITE_PASSWORD=\<password\>
-5. Import the json dashboards from the dashboards folder into your Grafana.
-6. Create a new VPS and follow [the installation guide](https://github.com/compassvpn/agent/blob/main/README.md#how-to-run) for installing the CompassVPN agent and set it up to send the metrics to your new Grafana Cloud.
-7. After running an agent VPN server, you can see the data in the dashboards.
-   ![3](https://github.com/user-attachments/assets/4b3686f7-4c07-4251-bc2d-a9a761c06af7)
 
-Note: Once you have set up the first CompassVPN agent instance, for the rest of the servers, you can clone the agent repository and use the same .env_file that you created and run the ./bootstrap.sh to create VPN services and send metrics to the Grafana Cloud.
+## Option 1: Grafana Cloud
 
-## Option 2: Deploy your own server
+Grafana Cloud offers a free tier that is sufficient for monitoring several CompassVPN agents.
 
-### Prometheus Server
-We use Prometheus to collect all configs and logs of the agents.
+### Step 1: Create a Grafana Cloud Account
 
-### Prometheus Pushgateway
-All agents push their metrics and vpn configs to pushgateway to be added to the Prometheus.
+1. Go to [Grafana Cloud](https://grafana.com/auth/sign-up/create-user) and sign up for a free account
+2. Verify your email address and complete the registration process
 
-### Grafana
-Use Prometheus as data source and visualize the metrics.
+### Step 2: Create a New Connection
 
-#### How to Install
+1. After creating your account, go to the following URL _(replace `<your-username>` with your actual Grafana Cloud username)_:
+   ```plaintext
+   https://<your-username>.grafana.net/connections/add-new-connection/hmInstancePromId
+   ```
 
-Make sure that you have a running Kubernetes cluster and you can retrieve the list of nodes using the following:
+2. Create a new token as shown in the image below:
+   ![Grafana Cloud screen prompting the user to create a new connection token](https://github.com/user-attachments/assets/020949ea-7a58-4acd-a843-a9d737aa24b7)
+   *Figure 1: Creating a new connection token in Grafana Cloud.*
+
+4. After creating the token, you'll see three credentials as shown below:
+   ![Grafana Cloud screen displaying the generated URL, username, and password credentials](https://github.com/user-attachments/assets/7e62690b-3b82-43f8-a6bc-b27ffffbe0a1)
+   *Figure 2: Copying the URL, username, and password credentials for agent configuration.*
+
+6. Copy these three credentials:
+   - URL
+   - Username
+   - Password
+   
+   These will be used in your agent configuration.
+
+### Step 3: Configure CompassVPN Agent
+
+Open the `env_file` on your VPN server and set the following variables:
+
+```shell
+METRIC_PUSH_METHOD=grafana_cloud
+GRAFANA_AGENT_REMOTE_WRITE_URL=<url>
+GRAFANA_AGENT_REMOTE_WRITE_USER=<username>
+GRAFANA_AGENT_REMOTE_WRITE_PASSWORD=<password>
 ```
+
+Replace:
+- `<url>` with the URL you copied
+- `<username>` with the username you copied
+- `<password>` with the password you copied
+
+For more details on these configuration parameters, see the [Configuration Guide](https://www.compassvpn.org/installation/configuration/).
+
+### Step 4: Import Dashboards
+
+1. In Grafana Cloud, navigate to **Dashboards** in the left sidebar
+2. Click the **Import** button
+3. Use the following dashboard ID:
+   - **`23181`** for CompassVPN Dashboard
+4. Set your prometheus data source
+
+   > Note: Dashboard page is available [here](https://grafana.com/grafana/dashboards/23181).
+
+## Option 2: Self-hosted Kubernetes Deployment
+
+This option gives you complete control over your monitoring stack but requires a Kubernetes cluster and more setup.
+
+### Repository Structure
+
+The CompassVPN manager repository contains the following key components:
+
+- `prometheus/` - Helm chart values for Prometheus
+- `grafana/` - Helm chart values for Grafana
+- `nginx-ingress-controller/` - Helm chart values for NGINX Ingress
+- `create_auth.sh` - Script to create basic authentication credentials
+- `auth.example` - Example authentication file
+- `users.txt.example` - Example users file
+
+### Step 1: Set Up a Kubernetes Cluster
+
+Ensure you have a running Kubernetes cluster and can retrieve the list of nodes:
+
+```bash
 kubectl get nodes
 ```
 
-#### Add Helm Chart Repos
-```
+### Step 2: Add Required Helm Chart Repositories
+
+```bash
 helm repo add grafana https://grafana.github.io/helm-charts
+```
+```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 ```
 
-## Create passwd file for basic auth for Prometheus pushgateway
-```
-htpasswd -c auth <user>
+### Step 3: Create Authentication for Prometheus Pushgateway
+
+1. Create a basic authentication file using the provided script or manually:
+
+```bash
+# Create auth file using the script
+./create_auth.sh
+
+# Or manually create it
+htpasswd -c auth <username>
 ```
 
-#### Create secret
-```
+2. Create a Kubernetes secret from the authentication file:
+
+```bash
 kubectl create secret generic basic-auth --from-file=auth
 ```
 
-#### Install Prometheus Helm Chart
-```
+You can refer to `auth.example` and `users.txt.example` in the repository for reference formats.
+
+### Step 4: Install Prometheus
+
+Navigate to the prometheus directory and install using Helm:
+
+```bash
 cd prometheus/
 helm install prometheus prometheus-community/prometheus -f values.yaml
 ```
 
-#### Install Grafana Helm Chart
-```
+### Step 5: Install Grafana
+
+Navigate to the grafana directory and install using Helm:
+
+```bash
 cd grafana/
+```
+```bash
 helm install grafana grafana/grafana -f values.yaml
 ```
 
-#### Install NGINX Ingress Controller
-```
+### Step 6: Install NGINX Ingress Controller
+
+Navigate to the nginx-ingress-controller directory and install using Helm:
+
+```bash
 cd nginx-ingress-controller/
+```
+```bash
 helm install nginx-ingress-controller oci://registry-1.docker.io/bitnamicharts/nginx-ingress-controller -f values.yaml
 ```
+
+### Step 7: Configure CompassVPN Agent
+
+Open the `env_file` on your VPN server and set the following variables:
+
+```bash
+METRIC_PUSH_METHOD=pushgateway
+PUSHGATEWAY_URL=http://your-ingress-domain.com
+PUSHGATEWAY_AUTH_USER=your_username
+PUSHGATEWAY_AUTH_PASSWORD=your_password
+```
+
+Replace:
+- `your-ingress-domain.com` with your configured ingress domain
+- `your_username` and `your_password` with the credentials you created
+
+### Step 8: Import Dashboards in Grafana
+
+1. Access Grafana at your configured ingress URL
+2. Log in with your Grafana credentials _(check the Grafana Helm values for default credentials)_
+3. Import the JSON dashboards:
+   - Navigate to **Dashboards** > **Import**
+   - Use dashboard ID `23181`
+   - Select your Prometheus data source
+   - Click **Import**
