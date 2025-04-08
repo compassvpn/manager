@@ -1,7 +1,7 @@
 {
   "__inputs": [
     {
-      "name": "DS_PTOMETHEUS",
+      "name": "DS_PROMETHEUS",
       "label": "prometheus",
       "description": "",
       "type": "datasource",
@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "12.0.0-85518.patch7-85777"
+      "version": "12.0.0-85820"
     },
     {
       "type": "panel",
@@ -100,7 +100,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -153,12 +153,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -172,7 +172,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -193,7 +193,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "List of all instances and their corresponding information within the time range.",
       "fieldConfig": {
@@ -316,12 +316,12 @@
           }
         ]
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -339,7 +339,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -354,7 +354,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -480,7 +480,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -596,12 +596,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -621,7 +621,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -656,7 +656,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -771,12 +771,12 @@
           "sort": "desc"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode=\"system\"}[10m])) * 100",
@@ -790,7 +790,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode='user'}[10m])) * 100",
@@ -804,7 +804,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode='iowait',instance=~\"$instance\"}[10m])) * 100",
@@ -818,7 +818,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode=~\".*irq\",instance=~\"$instance\"}[10m])) * 100",
@@ -832,7 +832,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", instance=~\"$instance\", mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq'}[10m])) * 100",
@@ -846,7 +846,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum by (instance)(rate(node_cpu_seconds_total{donor=~\"$donor\", mode='idle', instance=~\"$instance\"}[10m])) * 100",
@@ -864,7 +864,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Basic memory usage",
       "fieldConfig": {
@@ -1000,7 +1000,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
@@ -1020,7 +1020,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "node_memory_Cached_bytes{donor=~\"$donor\", instance=~\"$instance\"} + node_memory_Buffers_bytes{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1053,7 +1053,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1164,12 +1164,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1187,7 +1187,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1209,7 +1209,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1330,12 +1330,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "node_filesystem_size_bytes{donor=~\"$donor\", instance=~\"$instance\", device!~'rootfs', mountpoint='/'} - node_filesystem_avail_bytes{donor=~\"$donor\", instance=~\"$instance\",device!~'rootfs', mountpoint='/'}",
@@ -1348,7 +1348,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "node_filesystem_size_bytes{donor=~\"$donor\", instance=~\"$instance\", device!~'rootfs', mountpoint='/'}",
@@ -1365,7 +1365,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Total Network Usage for each instance and its network interface.",
       "fieldConfig": {
@@ -1385,7 +1385,7 @@
               }
             ]
           },
-          "unit": "decbits"
+          "unit": "decbytes"
         },
         "overrides": [
           {
@@ -1459,12 +1459,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1482,7 +1482,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1501,7 +1501,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1537,7 +1537,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Upload Speed of each Inbound",
       "fieldConfig": {
@@ -1664,12 +1664,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1689,7 +1689,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Download Speed of each Inbound",
       "fieldConfig": {
@@ -1817,12 +1817,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1842,7 +1842,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Number of unique users actively connected to the server. (Approximately)",
       "fieldConfig": {
@@ -1923,12 +1923,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -1943,7 +1943,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Approximation of current unique users for the last 2 minutes.",
       "fieldConfig": {
@@ -1990,12 +1990,12 @@
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2010,7 +2010,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Total number of connections established over time. This includes all connection attempts, including reconnections.",
       "fieldConfig": {
@@ -2091,12 +2091,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2111,7 +2111,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2157,12 +2157,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2177,7 +2177,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Average number of connections per unique user.",
       "fieldConfig": {
@@ -2258,12 +2258,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2278,7 +2278,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2324,12 +2324,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} / xray_unique_users{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2357,7 +2357,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Number of requests blocked by routing rules over time period.",
       "fieldConfig": {
@@ -2439,12 +2439,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2459,7 +2459,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Percentage of requests that are blocked by routing rules.",
       "fieldConfig": {
@@ -2506,12 +2506,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_percentage{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2526,7 +2526,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2617,12 +2617,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_total_connections{donor=~\"$donor\", instance=~\"$instance\"} - xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2634,7 +2634,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "xray_blocked_requests{donor=~\"$donor\", instance=~\"$instance\"}",
@@ -2662,7 +2662,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PTOMETHEUS}"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2728,6 +2728,66 @@
                 ]
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Transport"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Port"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Country"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Instance IP"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Delay (ms)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 300
+              }
+            ]
           }
         ]
       },
@@ -2755,12 +2815,12 @@
           }
         ]
       },
-      "pluginVersion": "12.0.0-85518.patch7-85777",
+      "pluginVersion": "12.0.0-85820",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PTOMETHEUS}"
+            "uid": "${DS_PROMETHEUS}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -2902,6 +2962,6 @@
   "timezone": "browser",
   "title": "CompassVPN Dashboard",
   "uid": "compassvpnorgdashboard",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }
