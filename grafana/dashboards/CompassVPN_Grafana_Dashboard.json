@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "12.0.0-85820"
+      "version": "12.0.0-86517"
     },
     {
       "type": "panel",
@@ -153,7 +153,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -316,7 +316,7 @@
           }
         ]
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -596,7 +596,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -771,7 +771,7 @@
           "sort": "desc"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1000,7 +1000,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1164,7 +1164,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1330,7 +1330,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1459,7 +1459,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1664,7 +1664,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1817,7 +1817,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1923,7 +1923,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -1990,7 +1990,7 @@
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2091,7 +2091,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2157,7 +2157,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2258,7 +2258,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2324,7 +2324,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2439,7 +2439,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2506,7 +2506,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2617,7 +2617,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2673,7 +2673,7 @@
           "custom": {
             "align": "center",
             "cellOptions": {
-              "type": "auto"
+              "type": "json-view"
             },
             "inspect": true
           },
@@ -2761,7 +2761,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 100
+                "value": 200
               }
             ]
           },
@@ -2815,7 +2815,7 @@
           }
         ]
       },
-      "pluginVersion": "12.0.0-85820",
+      "pluginVersion": "12.0.0-86517",
       "targets": [
         {
           "datasource": {
@@ -2851,7 +2851,7 @@
               "ip": true,
               "job": true,
               "machine_id": true,
-              "region": true
+              "region": false
             },
             "includeByName": {},
             "indexByName": {
@@ -2962,6 +2962,6 @@
   "timezone": "browser",
   "title": "CompassVPN Dashboard",
   "uid": "compassvpnorgdashboard",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
