@@ -2926,18 +2926,18 @@
       {
         "allowCustomValue": false,
         "current": {},
-        "definition": "query_result(topk(100, increase(node_network_receive_bytes_total[1d])))",
+        "definition": "label_values(instance)",
         "includeAll": true,
         "label": "Instance",
         "name": "instance",
         "options": [],
         "query": {
-          "qryType": 3,
-          "query": "query_result(topk(100, increase(node_network_receive_bytes_total[1d])))",
+          "qryType": 1,
+          "query": "label_values(instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "/instance=\"([^\"]+)\"/",
+        "regex": "",
         "type": "query"
       }
     ]
